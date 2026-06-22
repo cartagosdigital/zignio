@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zignio — Formação Vendedor | Aprenda a vender com verdade e estrutura</title>
+  <meta name="description" content="Formação Vendedor Zignio: em 8h ao vivo, aprenda exatamente o que fazer para ser um vendedor que ganha até R$ 20 mil por mês — com método, estrutura e autoconhecimento." />
+  <meta property="og:title" content="Formação Vendedor Zignio" />
+  <meta property="og:description" content="Vender bem não é talento inato — é estrutura, planejamento e autoconhecimento. Seja apresentado às melhores vagas do mercado." />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+  <link rel="icon" href="assets/monogram.svg" type="image/svg+xml" />
+</head>
+<body>
+
+  <!-- ───────────────── Announcement ───────────────── -->
+  <div class="announce">
+    <span class="announce__dot" aria-hidden="true"></span>
+    Turma com início em 8 de junho — vagas abertas
+  </div>
+
+  <!-- ───────────────── Header ───────────────── -->
+  <header class="nav" id="top">
+    <a class="nav__brand" href="#top" aria-label="Zignio — página inicial">
+      <span class="nav__mark" aria-hidden="true">
+        <svg viewBox="0 0 40 56" width="22" height="30" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
+          <path d="M20 4 V52" />
+          <path d="M20 18 C8 13 6 24 14 24 C22 24 20 13 8 18" />
+          <path d="M20 18 C32 13 34 24 26 24 C18 24 20 13 32 18" />
+        </svg>
+      </span>
+      <span class="nav__word">ZIGNIO</span>
+    </a>
+    <nav class="nav__links" aria-label="Seções">
+      <a href="#metodo">Método</a>
+      <a href="#cronograma">Cronograma</a>
+      <a href="#mentora">A mentora</a>
+      <a href="#alunos">Alunos</a>
+    </nav>
+    <a href="#oferta" class="btn btn--ghost nav__cta">Garantir minha vaga</a>
+  </header>
+
+  <main>
+    <!-- ───────────────── Hero + VSL ───────────────── -->
+    <section class="hero">
+      <div class="hero__grid wrap">
+        <div class="hero__copy">
+          <p class="eyebrow">Para profissionais de vendas prontos para crescer</p>
+          <h1 class="hero__title">
+            Seja um vendedor que ganha<br />
+            <em>até R$ 20 mil por mês</em>
+          </h1>
+          <p class="hero__lede">
+            Em <strong>8h de formação ao vivo</strong> você aprende exatamente o que fazer
+            para se tornar esse vendedor. Faça a Formação Vendedor Zignio e seja
+            <span class="ul">apresentado às melhores vagas</span> do mercado, de acordo com a sua pontuação.
+          </p>
+          <div class="hero__actions">
+            <a href="#oferta" class="btn btn--solid">Garantir minha vaga</a>
+            <span class="hero__price-hint">R$&nbsp;99,90 <span>· ou 12x de R$&nbsp;9,16</span></span>
+          </div>
+          <ul class="hero__trust">
+            <li>+8h ao vivo</li>
+            <li>Scripts que geraram +25 mi</li>
+            <li>Garantia de 7 dias</li>
+          </ul>
+        </div>
+
+        <!-- 9:16 autoplay VSL -->
+        <figure class="vsl" aria-label="Vídeo de apresentação da Formação Vendedor Zignio">
+          <div class="vsl__frame">
+            <div class="vsl__crop">
+              <div id="vsl-player"></div>
+            </div>
+            <button class="vsl__sound" id="vsl-sound" type="button" aria-pressed="false">
+              <svg class="vsl__sound-on" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="currentColor"/><path d="M16 8a5 5 0 010 8M18.5 5.5a9 9 0 010 13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+              <svg class="vsl__sound-off" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="currentColor"/><path d="M16 9l5 5M21 9l-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+              <span class="vsl__sound-label">Ativar som</span>
+            </button>
+            <button class="vsl__overlay" id="vsl-overlay" type="button" aria-label="Reproduzir vídeo"></button>
+          </div>
+          <div class="vsl__progress" aria-hidden="true"><span id="vsl-bar" class="vsl__bar"></span></div>
+          <figcaption class="vsl__cap">Assista — entenda o método em 2 minutos</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ───────────────── Manifesto / Método ───────────────── -->
+    <section class="manifesto" id="metodo">
+      <div class="wrap manifesto__grid">
+        <p class="eyebrow eyebrow--bronze">O método Zignio</p>
+        <blockquote class="manifesto__quote">
+          Vender bem não é talento inato. É <em>estrutura, planejamento e autoconhecimento</em>.
+        </blockquote>
+        <p class="manifesto__body">
+          Aqui você não aprende truques de persuasão. Aprende a se entender antes de entender o cliente,
+          a construir o seu próprio processo e a vender com verdade — para alcançar segurança e autonomia financeira.
+        </p>
+        <ul class="pillars">
+          <li><span class="pillars__n">01</span><h3>Planejamento inteligente</h3><p>Estruturar cada etapa da venda, com segurança e previsibilidade.</p></li>
+          <li><span class="pillars__n">02</span><h3>Organização e processo</h3><p>Uma base sólida para um crescimento consistente, sem improviso.</p></li>
+          <li><span class="pillars__n">03</span><h3>Autoconhecimento</h3><p>Quem se entende, vende com verdade — e fecha pelos motivos certos.</p></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ───────────────── Cronograma ───────────────── -->
+    <section class="schedule" id="cronograma">
+      <div class="wrap">
+        <header class="section-head">
+          <p class="eyebrow eyebrow--bronze">Cronograma de aulas</p>
+          <h2>Quatro encontros ao vivo</h2>
+          <p class="section-head__sub">Ao vivo e online — das 19h às 21h</p>
+        </header>
+
+        <ol class="timeline">
+          <li class="timeline__item">
+            <div class="timeline__meta"><span class="timeline__date">8 de junho</span><span class="timeline__tag">Módulo 01</span></div>
+            <h3>Fundamentos do vendedor que ganha dinheiro</h3>
+            <p>Como funciona a escalada de uma carreira em vendas: BDR, SDR, Inside Sales, Closer e Account Executive. Os comportamentos em comum dos vendedores que faturam acima de R$ 20.000/mês — baseado em casos reais de treinamento.</p>
+          </li>
+          <li class="timeline__item">
+            <div class="timeline__meta"><span class="timeline__date">9 de junho</span><span class="timeline__tag">Módulo 02</span></div>
+            <h3>A reunião de vendas que o cliente quer</h3>
+            <p>Como se preparar para cada reunião: o que checar antes de entrar, como conduzir um bom discovery usando SPIN para entender a dor e a motivação de compra — e vender pelos motivos certos, não empurrar o que não faz sentido.</p>
+          </li>
+          <li class="timeline__item">
+            <div class="timeline__meta"><span class="timeline__date">10 de junho</span><span class="timeline__tag">Módulo 03</span></div>
+            <h3>A temida quebra de objeções</h3>
+            <p>Como fazer uma apresentação contextualizada — sem ler slide. Como lidar com as objeções mais comuns: "está caro", "não é o momento", "preciso conversar". E como fazer follow-ups que realmente funcionam após a reunião.</p>
+          </li>
+          <li class="timeline__item">
+            <div class="timeline__meta"><span class="timeline__date">11 de junho</span><span class="timeline__tag">Módulo 04</span></div>
+            <h3>Processo seletivo</h3>
+            <p>Encerramento com resumo de tudo aprendido, apresentação de vagas de empresas parceiras e convite para 4 sessões coletivas de roleplay ao vivo com a Isa — onde cada participante recebe direcionamentos para melhorar os atendimentos.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ───────────────── Inclui ───────────────── -->
+    <section class="includes">
+      <div class="wrap includes__grid">
+        <div class="includes__head">
+          <p class="eyebrow eyebrow--bronze">O que está incluso</p>
+          <h2>Tudo que você recebe na formação</h2>
+          <p class="includes__note">Mais que metas, métodos. A formação une teoria, prática e direcionamento real para o mercado.</p>
+        </div>
+        <ul class="includes__list">
+          <li>+8h de formação ao vivo</li>
+          <li>Planejamento para atingir até R$ 20.000/mês como vendedor</li>
+          <li>Scripts de vendedores que já geraram +25 milhões em vendas</li>
+          <li>Apresentação a vagas ofertadas pelo mercado</li>
+          <li>Rankeamento dos alunos para orientação às melhores vagas</li>
+          <li>Acesso ao grupo exclusivo no WhatsApp</li>
+          <li>Q&amp;A ao vivo com a Isa</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ───────────────── Mentora ───────────────── -->
+    <section class="mentor" id="mentora">
+      <div class="wrap mentor__grid">
+        <div class="mentor__portrait">
+          <div class="mentor__photo" role="img" aria-label="Retrato de Isabela Costa">
+            <span class="mentor__mono" aria-hidden="true">
+              <svg viewBox="0 0 40 56" width="40" height="56" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"><path d="M20 4 V52"/><path d="M20 18 C8 13 6 24 14 24 C22 24 20 13 8 18"/><path d="M20 18 C32 13 34 24 26 24 C18 24 20 13 32 18"/></svg>
+            </span>
+          </div>
+        </div>
+        <div class="mentor__copy">
+          <p class="eyebrow eyebrow--bronze">Quem vai te ensinar</p>
+          <h2 class="mentor__name">Isabela Costa</h2>
+          <p>Empresária que perdia tempo e dinheiro toda vez que precisava repor um vendedor. Nessa jornada, conheceu talentos que ganhavam <strong>R$ 3.000/mês</strong> em empresas que <span class="ul">não lhes ofereciam espaço para crescer</span>.</p>
+          <p>Entendeu que treinar pessoas com fome de mudança seria mais inteligente do que apenas buscar vendedores prontos. No próprio negócio, já treinou <strong>+50 vendedores no 1:1</strong>, gerando mais de 20 milhões em receita.</p>
+          <p>Foi assim que nasceu a Formação Vendedor Zignio: conectar o vendedor que tem fome de crescimento com a empresa que precisa de um <span class="ul">vendedor capacitado</span>.</p>
+          <blockquote class="mentor__pull">"Ser exigente não é ser rude — é querer que as pessoas sejam melhores."</blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- ───────────────── Depoimentos ───────────────── -->
+    <section class="proof" id="alunos">
+      <div class="wrap">
+        <header class="section-head section-head--center">
+          <p class="eyebrow eyebrow--bronze">Resultados reais</p>
+          <h2>Quem aplicou o método</h2>
+        </header>
+        <div class="proof__grid">
+          <figure class="card-quote">
+            <div class="card-quote__head"><span class="card-quote__name">Gabriel, 20 anos</span><span class="card-quote__tag">20K/mês</span></div>
+            <blockquote>"Pra quem nem tem faculdade, eu não imaginava chegar onde cheguei. O método me deu processo — e o processo me deu previsibilidade."</blockquote>
+          </figure>
+          <figure class="card-quote">
+            <div class="card-quote__head"><span class="card-quote__name">Marina, 27 anos</span><span class="card-quote__tag">de 3K a 12K</span></div>
+            <blockquote>"Eu achava que vender era ter papo. Aprendi que é ter método. Hoje conduzo cada reunião com clareza e fecho pelos motivos certos."</blockquote>
+          </figure>
+          <figure class="card-quote">
+            <div class="card-quote__head"><span class="card-quote__name">Rafael, 31 anos</span><span class="card-quote__tag">novo cargo</span></div>
+            <blockquote>"O rankeamento me apresentou a uma vaga que eu nunca alcançaria sozinho. Saí de vendedor de loja para closer em SaaS."</blockquote>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ───────────────── Oferta + Countdown ───────────────── -->
+    <section class="offer" id="oferta">
+      <div class="wrap offer__inner">
+        <p class="eyebrow eyebrow--bronze">Formação Vendedor Zignio</p>
+
+        <div class="offer__price">
+          <span class="offer__currency">R$</span>
+          <span class="offer__value">99<span class="offer__cents">,90</span></span>
+        </div>
+        <p class="offer__install">ou em até <strong>12x de R$ 9,16</strong> no cartão</p>
+
+        <div class="countdown" aria-label="Tempo restante do 3º lote">
+          <p class="countdown__label"><span class="countdown__dot"></span>3º lote encerra em</p>
+          <div class="countdown__clock" id="countdown">
+            <div class="countdown__unit"><span data-cd="d">00</span><small>dias</small></div>
+            <span class="countdown__sep">:</span>
+            <div class="countdown__unit"><span data-cd="h">00</span><small>hrs</small></div>
+            <span class="countdown__sep">:</span>
+            <div class="countdown__unit"><span data-cd="m">00</span><small>min</small></div>
+            <span class="countdown__sep">:</span>
+            <div class="countdown__unit"><span data-cd="s">00</span><small>seg</small></div>
+          </div>
+        </div>
+
+        <a href="#" class="btn btn--solid btn--lg">Garantir minha vaga</a>
+        <p class="offer__sub">Vagas abertas — turma inicia em 8 de junho</p>
+
+        <div class="guarantee">
+          <span class="guarantee__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg>
+          </span>
+          <div>
+            <strong>Pagamento 100% seguro</strong>
+            <p>Garantia de 7 dias. Se não ficar satisfeito, devolvemos seu investimento.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ───────────────── Footer ───────────────── -->
+  <footer class="footer">
+    <div class="wrap footer__grid">
+      <div class="footer__brand">
+        <span class="nav__mark nav__mark--lg" aria-hidden="true">
+          <svg viewBox="0 0 40 56" width="26" height="36" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><path d="M20 4 V52"/><path d="M20 18 C8 13 6 24 14 24 C22 24 20 13 8 18"/><path d="M20 18 C32 13 34 24 26 24 C18 24 20 13 32 18"/></svg>
+        </span>
+        <span class="nav__word">ZIGNIO</span>
+        <p class="footer__tag">Educação em vendas com verdade, estrutura e autoconhecimento.</p>
+      </div>
+      <p class="footer__legal">© 2026 Zignio · Educação em Vendas. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="assets/main.js"></script>
+</body>
+</html>
