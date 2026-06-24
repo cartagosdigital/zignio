@@ -328,7 +328,6 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 600; line-height: 1.08; let
 /* ── Responsive ──────────────────────────────────── */
 @media (max-width: 920px) {
   .hero__grid { grid-template-columns: 1fr; }
-  .vsl { order: -1; }
   .pillars, .proof__grid { grid-template-columns: 1fr; }
   .includes__grid, .mentor__grid { grid-template-columns: 1fr; }
   .nav__links { display: none; }
