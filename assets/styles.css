@@ -277,8 +277,23 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 600; line-height: 1.08; let
 .offer__currency { font-family: var(--serif); font-size: 2rem; font-weight: 600; margin-top: .6rem; }
 .offer__value { font-family: var(--serif); font-size: clamp(4rem, 12vw, 6rem); font-weight: 600; line-height: .9; }
 .offer__cents { font-size: .42em; vertical-align: super; }
-.offer__install { color: var(--ink-soft); margin-bottom: 2rem; }
+.offer__install { color: var(--ink-soft); margin-bottom: 1.6rem; }
 .offer__install strong { color: var(--ink); }
+.offer__lote { font-family: var(--sans); font-size: .72rem; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: var(--bronze-deep); margin-top: .4rem; }
+
+/* lote ladder */
+.lotes { display: grid; grid-template-columns: repeat(3, 1fr); gap: .6rem; margin-bottom: 2rem; }
+.lote {
+  display: flex; flex-direction: column; align-items: center; gap: .25rem;
+  padding: .75rem .4rem; border: 1px solid var(--line); border-radius: 12px;
+  background: #fff; transition: border-color .25s ease, background .25s ease, opacity .25s ease;
+}
+.lote span { font-size: .66rem; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-soft); }
+.lote strong { font-family: var(--serif); font-size: 1.35rem; font-weight: 600; color: var(--ink); }
+.lote.is-active { border-color: var(--bronze); background: var(--areia); box-shadow: 0 0 0 1px var(--bronze) inset; }
+.lote.is-active span { color: var(--bronze-deep); }
+.lote.is-past { opacity: .42; }
+.lote.is-past strong { text-decoration: line-through; text-decoration-thickness: 1px; }
 
 .countdown { background: var(--ardosia); border-radius: 16px; padding: 1.4rem 1rem 1.1rem; margin-bottom: 2rem; }
 .countdown__label { display: flex; align-items: center; justify-content: center; gap: .5rem; font-size: .72rem; letter-spacing: .22em; text-transform: uppercase; color: var(--bronze-soft); font-weight: 700; margin-bottom: 1rem; }

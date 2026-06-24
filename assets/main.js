@@ -1,6 +1,6 @@
 /* ===========================================================
    ZIGNIO — interactions
-   1. VSL: YouTube IFrame API, 9:16 cover, autoplay (muted),
+   1. VSL: HTML5 video, 9:16 cover, autoplay (muted),
       custom progress bar, tap-to-unmute, tap-to-pause.
    2. Countdown to 3rd batch close.
    3. Scroll reveal.
@@ -9,7 +9,6 @@
 (function () {
   "use strict";
 
-  const VIDEO_ID = "jqC8WOZy_eI";
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   /* ---------- 1. VSL ---------- */
@@ -18,135 +17,134 @@
   const barEl   = document.getElementById("vsl-bar");
   const soundEl = document.getElementById("vsl-sound");
   const overlay = document.getElementById("vsl-overlay");
-  let player, raf;
-
-  // size the YouTube iframe so a 16:9 video fully covers the 9:16 frame
-  function coverFit() {
-    if (!cropEl) return;
-    const h = cropEl.clientHeight;
-    const w = h * (16 / 9);                 // width needed for a 16:9 video at full height
-    const iframe = cropEl.querySelector("iframe");
-    if (iframe) {
-      iframe.style.width = w + "px";
-      iframe.style.height = h + "px";
-      iframe.style.left = "50%";
-      iframe.style.top = "50%";
-      iframe.style.transform = "translate(-50%, -50%)";
-      iframe.style.position = "absolute";
-      iframe.style.maxWidth = "none";
-    }
-  }
-
-  function loadYouTubeAPI() {
-    if (window.YT && window.YT.Player) { createPlayer(); return; }
-    const tag = document.createElement("script");
-    tag.src = "https://www.youtube.com/iframe_api";
-    document.head.appendChild(tag);
-    window.onYouTubeIframeAPIReady = createPlayer;
-  }
+  let raf;
 
   function createPlayer() {
-    player = new YT.Player("vsl-player", {
-      videoId: VIDEO_ID,
-      playerVars: {
-        autoplay: 1,
-        mute: 1,
-        controls: 0,
-        modestbranding: 1,
-        rel: 0,
-        playsinline: 1,
-        disablekb: 1,
-        fs: 0,
-        iv_load_policy: 3,
-        loop: 1,
-        playlist: VIDEO_ID
-      },
-      events: {
-        onReady: onReady,
-        onStateChange: onStateChange
-      }
-    });
+    const video = document.createElement("video");
+    video.src = "vsl.webm";
+    video.autoplay = true;
+    video.muted = true;
+    video.loop = true;
+    video.playsInline = true;
+    video.setAttribute("playsinline", "");
+    video.style.position = "absolute";
+    video.style.top = "50%";
+    video.style.left = "50%";
+    video.style.transform = "translate(-50%, -50%)";
+    video.style.maxWidth = "none";
+    document.getElementById("vsl-player").replaceWith(video);
+    return video;
   }
 
-  function onReady(e) {
-    coverFit();
+  // size the video so a 16:9 clip fully covers the 9:16 frame
+  function coverFit(video) {
+    if (!cropEl || !video) return;
+    const h = cropEl.clientHeight;
+    const w = h * (16 / 9);
+    video.style.width = w + "px";
+    video.style.height = h + "px";
+  }
+
+  function tick(video) {
+    if (video.duration > 0) {
+      barEl.style.width = Math.min(100, (video.currentTime / video.duration) * 100) + "%";
+    }
+    raf = requestAnimationFrame(() => tick(video));
+  }
+
+  if (figure) {
+    const video = createPlayer();
     figure.dataset.muted = "true";
+    coverFit(video);
+    window.addEventListener("resize", () => coverFit(video));
+
+    video.addEventListener("play", () => {
+      cancelAnimationFrame(raf);
+      tick(video);
+    });
+    video.addEventListener("pause", () => cancelAnimationFrame(raf));
+
     if (!reduceMotion) {
-      e.target.mute();
-      e.target.playVideo();
+      video.play().catch(() => {});
+    }
+
+    // tap video → play / pause
+    if (overlay) {
+      overlay.addEventListener("click", function () {
+        if (video.paused) video.play();
+        else video.pause();
+      });
+    }
+
+    // sound toggle
+    if (soundEl) {
+      soundEl.addEventListener("click", function () {
+        if (video.muted) {
+          video.muted = false;
+          video.volume = 1;
+          figure.dataset.muted = "false";
+          soundEl.setAttribute("aria-pressed", "true");
+          if (video.paused) video.play();
+        } else {
+          video.muted = true;
+          figure.dataset.muted = "true";
+          soundEl.setAttribute("aria-pressed", "false");
+        }
+      });
     }
   }
 
-  function tick() {
-    if (player && player.getDuration) {
-      const d = player.getDuration();
-      const t = player.getCurrentTime();
-      if (d > 0) barEl.style.width = Math.min(100, (t / d) * 100) + "%";
-    }
-    raf = requestAnimationFrame(tick);
-  }
+  /* ---------- 2. Lotes + Countdown ---------- */
+  // Lote windows (horário de Brasília, UTC-3). Price escalates per batch.
+  const LOTES = [
+    { n: 1, price: "97",  start: "2026-06-24T00:00:00-03:00", end: "2026-07-03T19:00:00-03:00" },
+    { n: 2, price: "117", start: "2026-07-03T19:01:00-03:00", end: "2026-07-13T19:00:00-03:00" },
+    { n: 3, price: "137", start: "2026-07-13T19:01:00-03:00", end: "2026-07-22T18:00:00-03:00" }
+  ];
 
-  function onStateChange(e) {
-    if (e.data === YT.PlayerState.PLAYING) {
-      cancelAnimationFrame(raf);
-      tick();
-    } else {
-      cancelAnimationFrame(raf);
-    }
-  }
-
-  // tap video → play / pause
-  if (overlay) {
-    overlay.addEventListener("click", function () {
-      if (!player) return;
-      const state = player.getPlayerState();
-      if (state === YT.PlayerState.PLAYING) player.pauseVideo();
-      else player.playVideo();
-    });
-  }
-
-  // sound toggle
-  if (soundEl) {
-    soundEl.addEventListener("click", function () {
-      if (!player) return;
-      const muted = player.isMuted();
-      if (muted) {
-        player.unMute();
-        player.setVolume(100);
-        figure.dataset.muted = "false";
-        soundEl.setAttribute("aria-pressed", "true");
-        if (player.getPlayerState() !== YT.PlayerState.PLAYING) player.playVideo();
-      } else {
-        player.mute();
-        figure.dataset.muted = "true";
-        soundEl.setAttribute("aria-pressed", "false");
-      }
-    });
-  }
-
-  window.addEventListener("resize", coverFit);
-  if (figure) loadYouTubeAPI();
-
-  /* ---------- 2. Countdown ---------- */
   const cd = document.getElementById("countdown");
   if (cd) {
-    // Target: end of current day + 3 days (kept rolling so the page never shows 00s).
-    const KEY = "zignio_cd_target";
-    let target = Number(localStorage.getItem(KEY));
-    const now = Date.now();
-    if (!target || target < now) {
-      target = now + 1000 * 60 * 60 * 47 + 1000 * 60 * 23; // ~1d 23h 23m window
-      try { localStorage.setItem(KEY, String(target)); } catch (_) {}
-    }
     const out = {
       d: cd.querySelector('[data-cd="d"]'),
       h: cd.querySelector('[data-cd="h"]'),
       m: cd.querySelector('[data-cd="m"]'),
       s: cd.querySelector('[data-cd="s"]')
     };
+    const valueEl = document.getElementById("offer-value");
+    const loteEl  = document.getElementById("offer-lote");
+    const labelEl = document.getElementById("cd-label");
+    const ladder  = document.querySelectorAll("#lotes .lote");
     const pad = (n) => String(n).padStart(2, "0");
+
+    // first lote whose window hasn't closed yet → the active/upcoming one
+    function activeLote() {
+      const now = Date.now();
+      for (const l of LOTES) if (new Date(l.end).getTime() > now) return l;
+      return null; // all closed
+    }
+
+    function paintLadder(active) {
+      ladder.forEach((el) => {
+        const n = Number(el.dataset.lote);
+        el.classList.toggle("is-active", !!active && n === active.n);
+        el.classList.toggle("is-past", !!active && n < active.n);
+      });
+    }
+
     function render() {
-      let diff = Math.max(0, target - Date.now());
+      const active = activeLote();
+      if (!active) {
+        labelEl.textContent = "Inscrições encerradas";
+        out.d.textContent = out.h.textContent = out.m.textContent = out.s.textContent = "00";
+        paintLadder(null);
+        return;
+      }
+      if (valueEl) valueEl.innerHTML = active.price + '<span class="offer__cents">,00</span>';
+      if (loteEl)  loteEl.textContent = "Lote " + active.n;
+      if (labelEl) labelEl.textContent = "Lote " + active.n + " encerra em";
+      paintLadder(active);
+
+      let diff = Math.max(0, new Date(active.end).getTime() - Date.now());
       const d = Math.floor(diff / 86400000); diff -= d * 86400000;
       const h = Math.floor(diff / 3600000);  diff -= h * 3600000;
       const m = Math.floor(diff / 60000);    diff -= m * 60000;
