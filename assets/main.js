@@ -21,7 +21,7 @@
 
   function createPlayer() {
     const video = document.createElement("video");
-    video.src = "vsl.webm";
+    video.src = "vsl.mp4";
     video.loop = true;
     // Both the JS property AND the HTML attribute are required for
     // autoplay to work on mobile browsers (iOS/Android).
