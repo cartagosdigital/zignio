@@ -338,7 +338,7 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 600; line-height: 1.08; let
   .nav__links { display: none; }
 }
 @media (max-width: 560px) {
-  .hero::before { font-size: 20.8vw; opacity: .35; }
+  .hero::before { font-size: 20.8vw; opacity: .35; right: auto; left: 50%; transform: translateX(-50%); }
   .nav__cta { display: none; }
   .hero__title { font-size: 1.98rem; }
   .hero__title br { display: none; }
