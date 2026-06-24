@@ -236,17 +236,21 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 600; line-height: 1.08; let
 }
 
 /* ── Mentor ──────────────────────────────────────── */
-.mentor { padding: clamp(4rem, 9vw, 7rem) 0; }
+.mentor { padding: clamp(4rem, 9vw, 7rem) 0; background: var(--areia); }
 .mentor__grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(2rem, 5vw, 4.5rem); align-items: center; }
 .mentor__photo {
   aspect-ratio: 4/5; border-radius: var(--r);
-  background:
-    radial-gradient(120% 90% at 50% 0%, #34322e 0%, var(--ardosia-deep) 70%);
+  overflow: hidden;
+  position: relative;
   border: 1px solid var(--line);
-  display: grid; place-items: center;
   box-shadow: 0 30px 60px -35px rgba(38,38,37,.5);
 }
-.mentor__mono { color: rgba(184,153,95,.55); }
+.mentor__photo img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
 .mentor__copy { max-width: 560px; }
 .mentor__name { font-size: clamp(2.2rem, 5vw, 3.2rem); margin-bottom: 1.2rem; }
 .mentor__copy p { color: var(--ink-soft); margin-bottom: 1rem; }
@@ -330,6 +334,7 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 600; line-height: 1.08; let
   .hero__grid { grid-template-columns: 1fr; }
   .pillars, .proof__grid { grid-template-columns: 1fr; }
   .includes__grid, .mentor__grid { grid-template-columns: 1fr; }
+  .mentor__portrait { order: 2; }
   .nav__links { display: none; }
 }
 @media (max-width: 560px) {
