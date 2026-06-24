@@ -265,7 +265,7 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 600; line-height: 1.08; let
 .card-quote { background: rgba(244,240,233,.04); border: 1px solid var(--line-dark); border-radius: var(--r); padding: 1.8rem; }
 .card-quote__head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
 .card-quote__name { font-family: var(--serif); font-size: 1.3rem; color: var(--linho); }
-.card-quote__tag { font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; color: var(--ardosia-deep); background: var(--bronze-soft); padding: .25rem .6rem; border-radius: 999px; font-weight: 700; }
+.card-quote__tag { font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; color: var(--ardosia-deep); background: var(--bronze-soft); padding: .25rem .6rem; border-radius: 999px; font-weight: 700; white-space: nowrap; flex-shrink: 0; }
 .card-quote blockquote { color: var(--silver); font-size: 1rem; line-height: 1.6; }
 
 /* ── Offer ───────────────────────────────────────── */
