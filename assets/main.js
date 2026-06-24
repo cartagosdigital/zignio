@@ -22,10 +22,12 @@
   function createPlayer() {
     const video = document.createElement("video");
     video.src = "vsl.webm";
-    video.autoplay = true;
-    video.muted = true;
     video.loop = true;
-    video.playsInline = true;
+    // Both the JS property AND the HTML attribute are required for
+    // autoplay to work on mobile browsers (iOS/Android).
+    video.muted = true;
+    video.setAttribute("muted", "");
+    video.setAttribute("autoplay", "");
     video.setAttribute("playsinline", "");
     video.style.position = "absolute";
     video.style.top = "50%";
@@ -65,7 +67,21 @@
     video.addEventListener("pause", () => cancelAnimationFrame(raf));
 
     if (!reduceMotion) {
-      video.play().catch(() => {});
+      // Use IntersectionObserver so play() fires only when the video is
+      // visible — required for mobile browsers to honour the autoplay policy.
+      if ("IntersectionObserver" in window) {
+        const io = new IntersectionObserver(function (entries, obs) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              video.play().catch(() => {});
+              obs.disconnect();
+            }
+          });
+        }, { threshold: 0.25 });
+        io.observe(video);
+      } else {
+        video.play().catch(() => {});
+      }
     }
 
     // tap video → play / pause
