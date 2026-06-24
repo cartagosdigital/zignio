@@ -293,7 +293,7 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 600; line-height: 1.08; let
   background: #fff; transition: border-color .25s ease, background .25s ease, opacity .25s ease;
 }
 .lote span { font-size: .66rem; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-soft); }
-.lote strong { font-family: var(--serif); font-size: 1.35rem; font-weight: 600; color: var(--ink); }
+.lote strong { font-family: var(--sans); font-size: 1.35rem; font-weight: 600; color: var(--ink); }
 .lote.is-active { border-color: var(--bronze); background: var(--areia); box-shadow: 0 0 0 1px var(--bronze) inset; }
 .lote.is-active span { color: var(--bronze-deep); }
 .lote.is-past { opacity: .42; }
