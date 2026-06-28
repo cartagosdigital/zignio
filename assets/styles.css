@@ -265,6 +265,10 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 600; line-height: 1.08; let
 .proof__video { margin: 0; border-radius: var(--r); overflow: hidden; border: 1px solid var(--line-dark); aspect-ratio: 16/9; }
 .proof__video video { display: block; width: 100%; height: 100%; object-fit: cover; }
 
+.proof__prints { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 1.5rem; }
+.proof__print { margin: 0; border-radius: var(--r); overflow: hidden; border: 1px solid var(--line-dark); }
+.proof__print img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top; }
+
 /* ── Offer ───────────────────────────────────────── */
 .offer { padding: clamp(4rem, 9vw, 7rem) 0; }
 .offer__inner {
@@ -330,6 +334,7 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 600; line-height: 1.08; let
 @media (max-width: 920px) {
   .hero__grid { grid-template-columns: 1fr; }
   .pillars, .proof__grid { grid-template-columns: 1fr; }
+  .proof__prints { grid-template-columns: repeat(2, 1fr); }
   .includes__grid, .mentor__grid { grid-template-columns: 1fr; }
   .mentor__portrait { order: 2; }
   .nav__links { display: none; }
