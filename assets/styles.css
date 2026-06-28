@@ -265,7 +265,7 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 600; line-height: 1.08; let
 .proof__video { margin: 0; border-radius: var(--r); overflow: hidden; border: 1px solid var(--line-dark); aspect-ratio: 16/9; }
 .proof__video video { display: block; width: 100%; height: 100%; object-fit: cover; }
 
-.proof__prints { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 1.5rem; }
+.proof__prints { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1.5rem; }
 .proof__print { margin: 0; border-radius: var(--r); overflow: hidden; border: 1px solid var(--line-dark); aspect-ratio: 9/16; }
 .proof__print img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top; }
 
